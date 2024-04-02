@@ -1,202 +1,91 @@
 import java.util.*;
-
 interface UserAuthentication{
-
     void signUp();
-
     void LogIn();
-
-
-
 }
-
 class SignUp implements UserAuthentication{
-
-
-
     public void signUp() {
-
-
-
     }
-
     public void LogIn() {
 
-
-
-    }
-
-}
+    }}
 
 class Drive {
-
     int phoneNumber;
-
     String name;
-
     String gender;
-
     int age;
-
     int date;
-
     int otp = 1213;
-
-
     int carno = 2005;
-
-
     String PickUp;
-
     String Destination;
-
-
     double Distance;
-
-
     final double speed = 40;
-
-
     double time;
-
-
     int Driver;
-
-
     static double price = 1;
-
-
     int choiceCar;
-
-
     Scanner sc = new Scanner(System.in);
-
-
     void signup() {
-
-
         System.out.println("SignUp : ");
-
-
         System.out.print("Enter Name: ");
-
-
         name = sc.nextLine();
-
-
         System.out.print("Enter the phone number: ");
-
-
         phoneNumber = sc.nextInt();
-
-
         sc.nextLine();
-
-
         System.out.print("Enter gender: ");
-
-
         gender = sc.next();
-
-
         System.out.print("Enter age: ");
-
-
         age = sc.nextInt();
-
-
     }
 
     // for trip fourseater = 15 , seven seater = 20 , traveller = 25;
-
-
     void trip() {
-
         System.out.print("Distance must be between 20 to 100 kilometers : ");
-
         System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
-
         date = sc.nextInt();
-
         sc.nextLine();
-
         System.out.print("Enter your Destination : ");
-
         Destination = sc.nextLine();
-
         System.out.print("Enter approximate distance in kilometers : ");
-
         Distance = sc.nextDouble();
-
         System.out.println();
-
         time = Distance / speed;
-
         System.out.println(" approximate time of journey : " + time + " hrs");
-
-
         System.out.println("do you need a driver for your trip ? ");
-
         System.out.println("1. yes \n2. no");
-
         int driver = sc.nextInt();
-
         if (Distance >= 20 && Distance <= 100) {
-
             System.out.println("select your DreamDrive.....");
-
             System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
-
             int car = sc.nextInt();
-
             switch (car) {
-
                 case 1:
-
                     price = price + 25;
+                    break;
+                    case 2:
+                        price = price + 30;
 
                     break;
-
-                case 2:
-
-                    price = price + 30;
+                    case 3:
+                        price = price + 35;
 
                     break;
-
-                case 3:
-
-                    price = price + 35;
-
-                    break;
-
             }
-
             price = price * Distance;
-
             switch (driver) {
-
                 case 1:
-
                     price = price + 50;
-
                     break;
-
-                case 2:
-
-                    price = price;
-
-                    break;
-
+                    case 2:
+                        price = price;
+                        break;
             }
-
 
             System.out.println("total amount : " + price);
-
-
         }
     }
-
-
     void intercity() {
 
 
@@ -393,3 +282,5 @@ public class WanderWheels {
 
 
 }
+
+
