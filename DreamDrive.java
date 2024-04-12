@@ -77,6 +77,7 @@ class Cars{
     int Otp;
     Scanner sc = new Scanner(System.in);
     void Details(){
+
         System.out.println("you can pay by cash or on upiId :"+upiId);
         System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number : " + DriverPhonenumber);
         System.out.println("your Drive will be at pickup point in 5 mins ");
@@ -102,8 +103,6 @@ class Cars{
                 price = price * distance;
                 if(type.equals("intercity")){
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price = Drivers(price);
@@ -123,8 +122,6 @@ class Cars{
                 price = price * distance;
                 if(type.equals("intercity")){
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price =  Drivers(price);
@@ -145,8 +142,6 @@ class Cars{
                 price = price * distance;
                 if(type.equals("intercity")){
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price =  Drivers(price);
@@ -168,8 +163,6 @@ class Cars{
                 if(type.equals("intercity")){
 
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price =  Drivers(price);
@@ -202,8 +195,6 @@ class Cars{
                 if(type.equals("intercity")){
 
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price = Drivers(price);
@@ -225,8 +216,6 @@ class Cars{
                 if(type.equals("intercity")){
 
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price =   Drivers(price);
@@ -248,8 +237,6 @@ class Cars{
                 if(type.equals("intercity")){
 
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
 
                     price =   Drivers(price);
@@ -271,8 +258,6 @@ class Cars{
                 if(type.equals("intercity")){
 
                     price=fixDriver(price);
-                }else if(type.equals("rentals")){
-                    price=price;
                 }else {
                     price = Drivers(price);
                 }
@@ -296,8 +281,6 @@ class Cars{
         price = price * distance;
         if(type.equals("intercity")){
             price=fixDriver(price);
-        }else if(type.equals("rentals")){
-            price=price;
         }else {
 
             price =   Drivers(price);
@@ -341,6 +324,7 @@ class Drive {
     Scanner sc = new Scanner(System.in);
     Cars obj = new Cars();
 
+
     void trip() {
         System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
         date = sc.nextInt();
@@ -353,8 +337,6 @@ class Drive {
         Distance = sc.nextDouble();
         if(Distance<100) {
             System.out.println();
-            time = (Distance / speed)*60;
-            System.out.println(" approximate time of journey : " + time + " minutes");
             System.out.println("select your DreamDrive.....");
             System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
             int car = sc.nextInt();
@@ -385,8 +367,12 @@ class Drive {
         System.out.print("Enter approximate distance in kilometers : ");
         Distance = sc.nextDouble();
         System.out.println();
-        time = (Distance / speed)*60;
-        System.out.println(" approximate time of your journey is : " + time + " mins");
+        time = (Distance / speed);
+        if(time>=0 && time<=1) {
+            System.out.println(" approximate time of your journey is : " + (time*60) + " min");
+        }else{
+            System.out.println(" approximate time of your journey is : " + (time) + " hrs");
+        }
         if ( Distance <= 50) {
             System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
             int car = sc.nextInt();
@@ -406,14 +392,23 @@ class Drive {
 
         }
     }
+
+    String DriverName;
+    String DriverPhonenumber;
+    String upiId;
+    int choice;
+    String car;
+    int carNumber;
+    int Otp;
+   void details(){
+       System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
+       System.out.println("you can pay by cash or on upiId :"+upiId);
+       System.out.println("Drop the car at any of our center after use ");
+       System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
+       System.out.println("Emergency contact Number : 9999 4443 22 ");
+
+   }
     void rentals() {
-        String DriverName;
-        String DriverPhonenumber;
-        String upiId;
-        int choice;
-        String car;
-        int carNumber;
-        int Otp;
 
         System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
         int date=sc.nextInt();
@@ -436,12 +431,7 @@ class Drive {
                 DriverName = "raj";
                 DriverPhonenumber = "9446621212";
                 upiId = "rajd@axis";
-                System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println("Drop the car at any of our center after use ");
-                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
-                System.out.println("Emergency contact Number : 9999 4443 22 ");
-
+                details();
                 break;
 
             case 2 :
@@ -455,12 +445,7 @@ class Drive {
                 DriverName = "rahul";
                 DriverPhonenumber = "9446621212";
                 upiId = "rahuld@axis";
-                System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println("Drop the car at any of our center after use ");
-                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
-                System.out.println("Emergency contact Number : 9999 4443 22 ");
-
+                details();
                 break;
             case 3 :
                 price= 8000*days;
@@ -473,13 +458,7 @@ class Drive {
                 DriverName = "rishi";
                 DriverPhonenumber = "9446621212";
                 upiId = "rishid@axis";
-                System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println("Drop the car at any of our center after use ");
-                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
-                System.out.println("Emergency contact Number : 9999 4443 22 ");
-
-
+                details();
                 break;
         }
 
