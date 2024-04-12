@@ -40,7 +40,6 @@ class AuthService implements UserAuthentication{
     public AuthService(){
         this.users=new ArrayList<>();
     }
-    Scanner sc = new Scanner(System.in);
     public void signup(String username,String password,String fullName,String email,double phoneNumber){
         //checking if username already exists
 
@@ -76,11 +75,18 @@ class Cars{
     String car;
     int carNumber;
     int Otp;
-    int each = 10;
     Scanner sc = new Scanner(System.in);
+    void Details(){
+        System.out.println("you can pay by cash or on upiId :"+upiId);
+        System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number : " + DriverPhonenumber);
+        System.out.println("your Drive will be at pickup point in 5 mins ");
+        System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
+        System.out.println("Emergency Number : 9999 4444 22");
+
+    }
     void fourSeater(String type,double distance){
         System.out.println("Select your dreamDrive : ");
-        System.out.println("1.Celerio\n2.Swift Dzire\n3.Figo Ford\n3.Wagnor");
+        System.out.println("1.Celerio\n2.Swift Dzire\n3.Figo Ford\n4.Wagnor");
         double price=0;
         choice = sc.nextInt();
         switch (choice) {
@@ -103,9 +109,7 @@ class Cars{
                     price = Drivers(price);
                 }
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 2 :
@@ -127,9 +131,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 3 :
@@ -151,9 +153,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 4 :
@@ -176,9 +176,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
         }
@@ -212,9 +210,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 2 :
@@ -237,9 +233,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 3 :
@@ -262,9 +256,7 @@ class Cars{
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
 
             case 4 :
@@ -282,14 +274,11 @@ class Cars{
                 }else if(type.equals("rentals")){
                     price=price;
                 }else {
-                    // Drivers();
-                    // price = price + Drivers();
+                    price = Drivers(price);
                 }
 
                 System.out.println("total amount : " + price);
-                System.out.println("you can pay by cash or on upiId :"+upiId);
-                System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                Details();
                 break;
         }
 
@@ -315,11 +304,8 @@ class Cars{
         }
 
         System.out.println("total amount : " + price);
-        System.out.println("you can pay by cash or on upiId :"+upiId);
-        System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-        System.out.println("enjoy your dream Drive ");
-
-    }
+        Details();
+       }
 
     double Drivers(double price) {
         System.out.println("do you need a driver for your trip ? ");
@@ -352,14 +338,15 @@ class Drive {
     double time;
 
     static double price = 1;
-    int choiceCar;
     Scanner sc = new Scanner(System.in);
     Cars obj = new Cars();
-    // for trip fourseater = 15 , seven seater = 20 , traveller = 25;
+
     void trip() {
         System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
         date = sc.nextInt();
         sc.nextLine();
+        System.out.print("Please enter your pickup point : ");
+        PickUp = sc.nextLine();
         System.out.print("Enter your Destination : ");
         Destination = sc.nextLine();
         System.out.print("Enter approximate distance in kilometers : ");
@@ -390,18 +377,18 @@ class Drive {
         }    }
 
     void intercity() {
-        System.out.print("For Intercity rides distance must be less than 30 kilometers : ");
-        System.out.println("Please enter yoour pickup point");
+        System.out.println("For Intercity rides distance must be less than 50 kilometers : ");
+        System.out.print("Please enter your pickup point : ");
         PickUp = sc.nextLine();
         System.out.print("Enter your Destination : ");
         Destination = sc.nextLine();
         System.out.print("Enter approximate distance in kilometers : ");
         Distance = sc.nextDouble();
         System.out.println();
-        time = Distance / speed;
-        System.out.println(" approximate time of your journey is : " + time + " hrs");
+        time = (Distance / speed)*60;
+        System.out.println(" approximate time of your journey is : " + time + " mins");
         if ( Distance <= 50) {
-            System.out.println("Please select your DreamDrive.....");
+            System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
             int car = sc.nextInt();
             switch (car) {
                 case 1:
@@ -440,8 +427,9 @@ class Drive {
             case 1 :
                 price=3000 *days;
                 System.out.println("total amount : " + price);
-                System.out.println("your drive is confirmed");
-                System.out.println("Driver details");
+                System.out.println("your drive is confirmed\nplease pick up your drive from yours nearest DreamDrive center");
+                System.out.println("........................................................................................");
+                System.out.println("Details");
                 car = "wagnor";
                 carNumber = 2089;
                 Otp = 4532;
@@ -449,7 +437,11 @@ class Drive {
                 DriverPhonenumber = "9446621212";
                 upiId = "rajd@axis";
                 System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                System.out.println("you can pay by cash or on upiId :"+upiId);
+                System.out.println("Drop the car at any of our center after use ");
+                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
+                System.out.println("Emergency contact Number : 9999 4443 22 ");
+
                 break;
 
             case 2 :
@@ -464,14 +456,17 @@ class Drive {
                 DriverPhonenumber = "9446621212";
                 upiId = "rahuld@axis";
                 System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
-
+                System.out.println("you can pay by cash or on upiId :"+upiId);
+                System.out.println("Drop the car at any of our center after use ");
+                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
+                System.out.println("Emergency contact Number : 9999 4443 22 ");
 
                 break;
-            case 3:  price= 8000*days;
+            case 3 :
+                price= 8000*days;
                 System.out.println("total amount : " + price);
                 System.out.println("your drive is confirmed");
-                System.out.println("Driver details");
+                System.out.println("Details");
                 car = "Traveller";
                 carNumber = 4589;
                 Otp = 5656;
@@ -479,7 +474,11 @@ class Drive {
                 DriverPhonenumber = "9446621212";
                 upiId = "rishid@axis";
                 System.out.println(car+" is booked \ncarNumber : " + carNumber + "\notp : " + Otp + "\nDriverName : " + DriverName + "\nDrivers Phone number " + DriverPhonenumber);
-                System.out.println("enjoy your dream Drive ");
+                System.out.println("you can pay by cash or on upiId :"+upiId);
+                System.out.println("Drop the car at any of our center after use ");
+                System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
+                System.out.println("Emergency contact Number : 9999 4443 22 ");
+
 
                 break;
         }
@@ -496,9 +495,9 @@ public class DreamDrive{
         int choice;
         do{
             System.out.println("enter your choice\n1.signup\n2.login\n3.trip\n4.intercity\n5.rentals");
+            System.out.println("...................................................................................");
             choice = sc.nextInt();
-            sc.nextLine();//consume new line
-
+            sc.nextLine();
 
             switch(choice){
                 case 1 :
@@ -534,11 +533,14 @@ public class DreamDrive{
                     drive.rentals();
                     break;
 
-                case 6 :
+                default:
+                    System.out.println("please enter valid choice");
 
 
             }
+            System.out.println("...................................................................................");
         }while(choice<=6);
+
     }
 }
 
