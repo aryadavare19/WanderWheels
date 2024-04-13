@@ -58,7 +58,7 @@ class AuthService implements UserAuthentication{
         for (Users u : users){
             if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
                 System.out.println("login successfully");
-                System.out.println("WELCOME "+u.getFullName()+" on WanderWheels");
+                System.out.println("WELCOME "+u.getFullName()+" on Dream Drive");
                 return true;
             }
         }
@@ -433,13 +433,13 @@ class Drive {
 
 public class DreamDrive{
     public static void main(String[] args) {
-        System.out.println("welcome to wonder wheels !!!!!!!!!!!!!!!");
+        System.out.println("welcome to Dream Drive !!!!!!!!!!!!!!!");
         AuthService auth = new AuthService();
         Drive drive = new Drive();
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
-            System.out.println("enter your choice\n1.signup\n2.login\n3.trip\n4.intercity\n5.rentals");
+            System.out.println("enter your choice\n1.signup\n2.login\n3.exit");
             System.out.println("...................................................................................");
             choice = sc.nextInt();
             sc.nextLine();
@@ -463,27 +463,39 @@ public class DreamDrive{
                     String loginUsername = sc.nextLine();
                     System.out.println("Enter password : ");
                     String loginPassword = sc.nextLine();
-                    auth.login(loginUsername,loginPassword);
-                    break;
-                case 3:
-                    drive.trip();
-                    break;
+                    boolean k = auth.login(loginUsername,loginPassword);
+                    int ch;
+                    if(k) {
+                        do {
+                            System.out.println("...................................................................................");
+                            System.out.println("enter your choice : \n1.trip\n2.intercity\n3.rentals\n4. exit");
+                            ch = sc.nextInt();
+                            sc.nextLine();
+                            switch (ch) {
+                                case 1:
+                                    drive.trip();
+                                    break;
 
-                case 4 :
-                    drive.intercity();
-                    break;
+                                case 2:
+                                    drive.intercity();
+                                    break;
 
-                case 5 :
-                    drive.rentals();
-                    break;
+                                case 3:
+                                    drive.rentals();
+                                    break;
+                            }}while(ch<4);
+                        }else{
+                            System.out.println("please enter valid choice");
+                        }
+                        break;
 
-                default:
-                    System.out.println("please enter valid choice");
+                        default:
+                            System.out.println("please enter valid choice");
 
 
             }
             System.out.println("...................................................................................");
-        }while(choice<=6);
+        }while(choice<3);
 
     }
 }
