@@ -273,7 +273,7 @@ class Cars{
                 System.out.println(car+" is booked \nDetails \ncarNumber : " + carNumber);
                 System.out.println("enjoy your dream Drive \n Be Alert , Be Safe");
                 System.out.println("Emergency Number : 9999 4444 22");
-
+                System.out.println("drop drive after use at our center");
 
                 break;
         }
@@ -413,7 +413,7 @@ class Drive {
                 System.out.println("total amount : " + price);
                 System.out.println("your drive is confirmed");
                 System.out.println("Driver details");
-                car = "Ertiga";
+                car = "Ford explorer";
                 carNumber = 3089;
                 details();
                 break;
