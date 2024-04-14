@@ -56,7 +56,7 @@ class AuthService implements UserAuthentication{
 
     public boolean login(String username , String password){
         for (Users u : users){
-            if(u.getUsername().equals(username)&& u.getPassword().equals(password)){
+            if(u.getUsername().equals(username) && u.getPassword().equals(password)){
                 System.out.println("login successfully");
                 System.out.println("WELCOME "+u.getFullName()+" on Dream Drive");
                 return true;
@@ -439,7 +439,7 @@ public class DreamDrive{
         Scanner sc = new Scanner(System.in);
         int choice;
         do{
-            System.out.println("enter your choice\n1.signup\n2.login\n3.exit");
+            System.out.println("enter your choice\n1.signup\n2.login\n3.exit Dream Drive");
             System.out.println("...................................................................................");
             choice = sc.nextInt();
             sc.nextLine();
@@ -468,7 +468,7 @@ public class DreamDrive{
                     if(k) {
                         do {
                             System.out.println("...................................................................................");
-                            System.out.println("enter your choice : \n1.trip\n2.intercity\n3.rentals\n4. exit");
+                            System.out.println("enter your choice : \n1.trip\n2.intercity\n3.rentals\n4.logout");
                             ch = sc.nextInt();
                             sc.nextLine();
                             switch (ch) {
@@ -488,9 +488,6 @@ public class DreamDrive{
                             System.out.println("please enter valid choice");
                         }
                         break;
-
-                        default:
-                            System.out.println("please enter valid choice");
 
 
             }
