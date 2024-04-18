@@ -291,6 +291,11 @@ class Cars{
 
     }
 }
+class invalidinputException extends Exception{
+    invalidinputException(String str){
+        System.out.print(str+" : ");
+    }
+}
 class Drive {
     int date;
     String PickUp;
@@ -463,6 +468,15 @@ class Drive {
 }
 
 public class DreamDrive{
+    static void Test(String email) throws invalidinputException{
+
+        if(email.substring(email.length()-3).equals(".in")){
+            System.out.println();
+        }else{
+            throw new invalidinputException("Enter email in right form");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("welcome to Dream Drive !!!!!!!!!!!!!!!");
         AuthService auth = new AuthService();
@@ -482,11 +496,20 @@ public class DreamDrive{
                     String signupPassword = sc.nextLine();
                     System.out.println("Enter fullName : ");
                     String fullName = sc.nextLine();
+
                     System.out.println("Enter email : ");
-                    String email = sc.nextLine();
-                    System.out.println("Enter phoneNumber : ");
-                    double phoneNumber = sc.nextDouble();
-                    auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
+                     String email = sc.nextLine();
+                    try {
+                        Test(email);
+                        System.out.println("Enter phoneNumber : ");
+                        double phoneNumber = sc.nextDouble();
+                        auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
+
+                    }catch(invalidinputException e){
+                        System.out.println(" give valid emailId");
+
+                    }
+
                     break;
                 case 2 :
                     System.out.println("Enter username : ");
