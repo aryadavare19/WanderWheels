@@ -291,11 +291,6 @@ class Cars{
 
     }
 }
-class invalidinputException extends Exception{
-    invalidinputException(String str){
-        System.out.print(str+" : ");
-    }
-}
 class Drive {
     int date;
     String PickUp;
@@ -313,65 +308,51 @@ class Drive {
         System.out.println("for trip distance must be less than 100 kms ");
         System.out.println("Please enter the date of your trip in the form(DDMMYY)");
         date = sc.nextInt();
-       try{
-           int year = date % 100;
-           if(year!=24){
-               throw new IllegalArgumentException("invalid year");
-           }
-           try{
-               year = date%100;
-               int month = year%100;
-               if(month<=0 || month>12){
-                   throw new IllegalArgumentException("invalid month");
-               }
-               try{
-                   year = date%100;
-                    month = year%100;
-                    int d=month%100;
-                   if(d<=0 || d>31){
-                       throw new IllegalArgumentException("invalid day");
+        int day=date/10000;
+        int month=(date/100)%100;
+        int year=date%100;
+       if(year > 0 && year < 99){
+           if(month>0 && month<13){
+               if(day>0 && day<32){
+                   sc.nextLine();
+                   System.out.print("Please enter your pickup point : ");
+                   PickUp = sc.nextLine();
+                   System.out.print("Enter your Destination : ");
+                   Destination = sc.nextLine();
+                   System.out.print("Enter approximate distance in kilometers : ");
+                   Distance = sc.nextDouble();
+                   if(Distance<100) {
+                       System.out.println();
+                       System.out.println("select your DreamDrive.....");
+                       System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
+                       int car = sc.nextInt();
+
+
+                       switch (car) {
+                           case 1:
+                               obj.fourSeater("trip",Distance);
+                               break;
+
+                           case 2 :
+                               obj.SevenSeater("trip",Distance);
+                               break;
+
+                           case 3:
+                               obj.traveller("trip",Distance);
+                               break;
+                       }
+
                    }
-
-
-        sc.nextLine();
-        System.out.print("Please enter your pickup point : ");
-        PickUp = sc.nextLine();
-        System.out.print("Enter your Destination : ");
-        Destination = sc.nextLine();
-        System.out.print("Enter approximate distance in kilometers : ");
-        Distance = sc.nextDouble();
-        if(Distance<100) {
-            System.out.println();
-            System.out.println("select your DreamDrive.....");
-            System.out.println("1. 4 seater\n2. 7 seater\n3. traveller");
-            int car = sc.nextInt();
-
-
-            switch (car) {
-                case 1:
-                    obj.fourSeater("trip",Distance);
-                    break;
-
-                case 2 :
-                    obj.SevenSeater("trip",Distance);
-                    break;
-
-                case 3:
-                    obj.traveller("trip",Distance);
-                    break;
-            }
-
-        } else{
-            System.out.println("please choose rentals trips are only for distance less than 100 Kms");
-         } }catch(IllegalArgumentException e){
-                   System.out.println("please enter valid day date .");
+               }else{
+                   System.out.println("enter valid date");
                }
-           }catch(IllegalArgumentException e){
-               System.out.println("please enter valid month .");
+           }else{
+               System.out.println("enter valid date");
            }
-       }catch(IllegalArgumentException e){
-           System.out.println("please enter valid year .");
-       }}
+       }else{
+           System.out.println("enter valid date");
+       }
+        }
 
 
     void intercity() {
@@ -466,17 +447,19 @@ class Drive {
 
     }
 }
+class invalidinputException extends Exception{
+    invalidinputException(String str){
+        super(str);
+    }
+}
 
 public class DreamDrive{
-    static void Test(String email) throws invalidinputException{
+   static void TestEmail(String email) throws invalidinputException{
 
-        if(email.substring(email.length()-3).equals(".in")){
-            System.out.println();
-        }else{
-            throw new invalidinputException("Enter email in right form");
+        if(email.length()<=3 || !email.endsWith(".in")){
+            throw new invalidinputException("invalid emailId");
         }
     }
-
     public static void main(String[] args) {
         System.out.println("welcome to Dream Drive !!!!!!!!!!!!!!!");
         AuthService auth = new AuthService();
@@ -496,20 +479,19 @@ public class DreamDrive{
                     String signupPassword = sc.nextLine();
                     System.out.println("Enter fullName : ");
                     String fullName = sc.nextLine();
+                    System.out.println("Enter phoneNumber : ");
+                    double phoneNumber = sc.nextDouble();
+                    sc.nextLine();
 
-                    System.out.println("Enter email : ");
-                     String email = sc.nextLine();
-                    try {
-                        Test(email);
-                        System.out.println("Enter phoneNumber : ");
-                        double phoneNumber = sc.nextDouble();
-                        auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
-
-                    }catch(invalidinputException e){
-                        System.out.println(" give valid emailId");
+                   try {
+                   System.out.println("Enter email : ");
+                    String email = sc.nextLine();
+                    TestEmail(email);
+                    auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
+                        }catch(invalidinputException e){
+                        System.out.println(" give valid input");
 
                     }
-
                     break;
                 case 2 :
                     System.out.println("Enter username : ");
