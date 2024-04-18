@@ -34,7 +34,7 @@ class Users{
     }
 }
 class AuthService implements UserAuthentication{
-    private ArrayList<Users> users;
+    private ArrayList<Users> users; // arraylist of type Users class
 
     public AuthService(){
         this.users=new ArrayList<>();
@@ -42,7 +42,7 @@ class AuthService implements UserAuthentication{
     public void signup(String username,String password,String fullName,String email,double phoneNumber){
         //checking if username already exists
 
-        for (Users u : users) {
+        for (Users u : users) { // enhanced for loop for iteration of object u of class Users through arralist users
             if(u.getUsername().equals(username)){
                 System.out.println("Username already exists . please use different username");
                 return;
@@ -407,7 +407,15 @@ class Drive {
 
         System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
         int date=sc.nextInt();
-        System.out.println("Enter no of days of journey:");
+        int day=date/10000;
+        int month=(date/100)%100;
+        int year=date%100;
+        if(year > 0 && year < 99){
+            if(month>0 && month<13){
+                if(day>0 && day<32){
+                    sc.nextLine();
+
+                    System.out.println("Enter no of days of journey:");
         int days=sc.nextInt();
         System.out.println("select your DreamDrive.....");
         System.out.println("1. 4 seater=3000/day\n2. 7 seater=6000/day\n3. traveller=8000/day");
@@ -445,8 +453,16 @@ class Drive {
                 break;
         }
 
+    }else{
+                System.out.println("enter valid date");
+            }
+        }else{
+            System.out.println("enter valid date");
+        }
+    }else{
+        System.out.println("enter valid date");
     }
-}
+}}
 class invalidinputException extends Exception{
     invalidinputException(String str){
         super(str);
@@ -456,8 +472,8 @@ class invalidinputException extends Exception{
 public class DreamDrive{
    static void TestEmail(String email) throws invalidinputException{
 
-        if(email.length()<=3 || !email.endsWith(".in")){
-            throw new invalidinputException("invalid emailId");
+        if(!( email.endsWith(".in") || email.endsWith(".com"))) {
+            throw new invalidinputException("invalid emailId");// throws exception for this condition
         }
     }
     public static void main(String[] args) {
@@ -482,14 +498,14 @@ public class DreamDrive{
                     System.out.println("Enter phoneNumber : ");
                     double phoneNumber = sc.nextDouble();
                     sc.nextLine();
-
+                    //checking if it's a valid email that ends with .in
                    try {
                    System.out.println("Enter email : ");
                     String email = sc.nextLine();
-                    TestEmail(email);
+                    TestEmail(email); //checking if its a valid email by passing it to test email
                     auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
                         }catch(invalidinputException e){
-                        System.out.println(" give valid input");
+                        System.out.println("give valid input");
 
                     }
                     break;
