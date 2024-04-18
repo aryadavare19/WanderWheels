@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.ArrayList;
-import static java.util.List.*;
 interface UserAuthentication{
     void signup(String username,String password,String fullName,String email,double phoneNumber);
     boolean login(String username , String password);
@@ -306,8 +305,29 @@ class Drive {
 
 
     void trip() {
-        System.out.println("Please enter the date of your trip in the form(DDMMYYYY)");
+        System.out.println("for trip distance must be less than 100 kms ");
+        System.out.println("Please enter the date of your trip in the form(DDMMYY)");
         date = sc.nextInt();
+       try{
+           int year = date % 100;
+           if(year!=24){
+               throw new IllegalArgumentException("invalid year");
+           }
+           try{
+               year = date%100;
+               int month = year%100;
+               if(month<=0 || month>12){
+                   throw new IllegalArgumentException("invalid month");
+               }
+               try{
+                   year = date%100;
+                    month = year%100;
+                    int d=month%100;
+                   if(d<=0 || d>31){
+                       throw new IllegalArgumentException("invalid day");
+                   }
+
+
         sc.nextLine();
         System.out.print("Please enter your pickup point : ");
         PickUp = sc.nextLine();
@@ -336,7 +356,18 @@ class Drive {
                     break;
             }
 
-        }    }
+        } else{
+            System.out.println("please choose rentals trips are only for distance less than 100 Kms");
+         } }catch(IllegalArgumentException e){
+                   System.out.println("please enter valid day date .");
+               }
+           }catch(IllegalArgumentException e){
+               System.out.println("please enter valid month .");
+           }
+       }catch(IllegalArgumentException e){
+           System.out.println("please enter valid year .");
+       }}
+
 
     void intercity() {
         System.out.println("For Intercity rides distance must be less than 50 kilometers ");
@@ -455,7 +486,6 @@ public class DreamDrive{
                     String email = sc.nextLine();
                     System.out.println("Enter phoneNumber : ");
                     double phoneNumber = sc.nextDouble();
-
                     auth.signup(signupUsername,signupPassword,fullName,email,phoneNumber);
                     break;
                 case 2 :
